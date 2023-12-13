@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kortlagar</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1 class="header">Lag eit julekort!</h1>
+
+    <div id="cardMaker">
+        <h2>Julekort-lagaren</h2>
+        <form>
+            <label for="image">Bilde:</label>
+            <input type="file" id="image" name="image" accept="image/*" required><br><br>
+            
+            <label for="message">Melding:</label>
+            <textarea id="message" name="message" required></textarea><br><br>
+            
+            <label for="sender">Avsender:</label>
+            <input type="text" id="sender" name="sender" required><br><br>
+            
+            <label for="color">Farge:</label>
+            <input type="color" id="color" name="color" required><br><br>
+            
+            <button type="submit">Lag kort!</button>
+        </form>
+        <div id="cardPreview"></div>
+    </div>
+    
+    <script src="js/script.js"></script>
+</body>
+</html>
+    
+</body>
+</html>

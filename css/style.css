@@ -1,12 +1,52 @@
-h1,h2,form{
-    text-align: center;
-    color: white;
-}
-body {
-    background-color: #ff0000;
-}
-.header {
-    box-shadow: 10px 20px 10px rgba(0, 0, 0, 0.5);
+h2 {
+    font-size: 20px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 40px;
+     text-align: center;
+    color: #ffffff;
+    
 }
 
+body {
+background-image: url("../images/bakgrunn2.png"); 
+   text-align: center;
+   background-repeat: no-repeat;
+    background-size: cover;
+}
+
+p {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+
+.julekortDiv {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ff0000;
+    width: 500px;
+    height: 600px;
+    border-radius: 30px;
+    
+}
+
+.button,
+button {
+    background-color: #c00202;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover,
+button:hover {
+    background-color: #a40000;
+}
 

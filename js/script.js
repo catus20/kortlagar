@@ -1,63 +1,67 @@
-// Get the form element
-const form = document.querySelector('form');
+document.addEventListener('DOMContentLoaded', function () {
+ 
+    const lagKortButton = document.querySelector('.button button');
 
-// Add event listener to the form submit event
-form.addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent form submission
+    lagKortButton.addEventListener('click', function () {
+        // Hent verdier fra skjemaet
+        const overskrift = document.getElementById('navn').value;
+        const tekst = document.getElementById('tekst').value;
+        const fra = document.getElementById('fra').value;
+        const valgtBilde = document.querySelector('.bilde select').value;
+        const skriftfarge = document.getElementById('skriftfarge').value;
+        const bakgrunnsfarge = document.getElementById('bkfarge').value;
 
-    // Get the input values
-    const recipient = document.getElementById('recipient').value;
-    const message = document.getElementById('message').value;
+        // Opprett kortet med de valgte verdiene
+        const kort = document.createElement('div');
+        kort.className = 'generertKort';
+        kort.innerHTML = `
+            <h2 style="color: ${skriftfarge}; font-size: 24px;">${overskrift}</h2>
+            <img src="${valgtBilde}" alt="Valgt bilde" style="max-width: 60%; margin-top: 10px;">
+            <p style="color: ${skriftfarge}; font-size: 24px;">${tekst} </p>
+            <p style="color: ${skriftfarge}; font-size: 16px;"> <strong>Frå:</strong> ${fra}</p>
+        `;
 
-    // Create a canvas element
-    const canvas = document.createElement('canvas');
-    canvas.width = 800; // Increase the width to make it bigger
-    canvas.height = 400; // Increase the height to make it bigger
+        // Stil kortet
+        kort.style.backgroundColor = bakgrunnsfarge;
+        kort.style.borderRadius = '20px';
+        kort.style.padding = '20px';
+        kort.style.width = '600px'; 
+        kort.style.height = '700px';
+        kort.style.margin = '0 auto';
+        kort.style.maxWidth = '100%';
+        kort.style.boxSizing = 'border-box';
 
-    // Get the canvas context
-    const ctx = canvas.getContext('2d');
+        // Skjul skjemaet
+        document.querySelector('.julekortDiv').style.display = 'none';
 
-    // Set the background color
-    ctx.fillStyle = 'red';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+        // Legg til kortet i body
+        document.body.appendChild(kort);
 
-    // Set the text color and font
-    ctx.fillStyle = 'white';
-    ctx.font = '24px Arial';
+        // Legg til knapper
+        const knappContainer = document.createElement('div');
+        knappContainer.className = 'knapp-container';
+        knappContainer.innerHTML = `
+            <button onclick="gåTilbake()">Gå tilbake til kortgeneratoren</button>
+            <button onclick="printKort()">Print julekortet</button>
+        `;
+        
+        // Stil knapp-container
+        knappContainer.style.textAlign = 'center';
+        knappContainer.style.marginTop = '20px';
 
-    // Draw the message on the canvas
-    ctx.fillText(recipient, 20, 50);
-    ctx.fillText(message, 20, 100);
-
-    // Draw a star in the middle of the canvas
-    ctx.fillStyle = 'yellow';
-    ctx.beginPath();
-    ctx.moveTo(canvas.width / 2, canvas.height / 2 - 100);
-    ctx.lineTo(canvas.width / 2 + 15, canvas.height / 2 + 45);
-    ctx.lineTo(canvas.width / 2 - 15, canvas.height / 2 + 45);
-    ctx.closePath();
-    ctx.fill();
-
-    // Draw additional lines to complete the star shape
-    ctx.beginPath();
-    ctx.moveTo(canvas.width / 2, canvas.height / 2 - 100);
-    ctx.lineTo(canvas.width / 2 + 30, canvas.height / 2 + 45);
-    ctx.lineTo(canvas.width / 2 - 30, canvas.height / 2 + 45);
-    ctx.closePath();
-    ctx.fill();
-
-    ctx.beginPath();
-    ctx.moveTo(canvas.width / 2, canvas.height / 2 - 100);
-    ctx.lineTo(canvas.width / 2 + 15, canvas.height / 2 + 75);
-    ctx.lineTo(canvas.width / 2 - 15, canvas.height / 2 + 75);
-    ctx.closePath();
-    ctx.fill();
-    // Convert the canvas to a data URL
-    const dataURL = canvas.toDataURL('image/png');
-
-    // Create a link element
-    const link = document.createElement('a');
-    link.href = dataURL;
-    link.download = 'kort.png';
-    link.click();
+        // Legg til knapp-container under kortet
+        document.body.appendChild(knappContainer);
+    });
 });
+
+function gåTilbake() {
+    // Vis skjemaet og fjern det genererte kortet og knappene
+    document.querySelector('.julekortDiv').style.display = 'block';
+    document.querySelector('.generertKort').remove();
+    document.querySelector('.knapp-container').remove();
+}
+
+function printKort() {
+    // Åpne printvinduet
+    window.print();
+}

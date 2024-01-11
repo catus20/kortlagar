@@ -3,35 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kortlagar</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Julekort</title>
+
+    <script src="js/script.js"></script>
 </head>
 <body>
-    <h1 class="header">Lag eit julekort!</h1>
+    <div class="julekortDiv">
+        <div class="overskrift">
+            <h2> Lag ditt eget julekort, velg korleis det skal sjå ut under.</h2>
+            <p>Tittel:</p>
+            <input type="text" id="navn" placeholder="Overskrift" />
+        </div>
 
-    <div id="cardMaker">
-        <h2>Julekort-lagaren</h2>
-        <form>
-            <label for="image">Bilde:</label>
-            <input type="file" id="image" name="image" accept="image/*" required><br><br>
+        <div class="tekst">
+            <p>Tekst:</p>
+            <textarea id="tekst" placeholder="Tekst"></textarea> 
+        </div>
+
+        <div class="fra">
+            <p>Frå: </p> 
+            <input type="text" id="fra" placeholder="Fra" />
+        </div>
+
+        <div class="bilde">
+            <p>Bilete:    <select class="bilde">
+                <option value="images/nisse.png">Nisse</option>
+                <option value="images/christmasornaments.png">Julekuler</option>
+                <option value="images/rudolph.png">Rudolf</option>
+            </select> </p>
             
-            <label for="message">Melding:</label>
-            <textarea id="message" name="message" required></textarea><br><br>
+        </div>
+
+        <div class="skriftfarge">
+            <p>Skriftfarge:   <input type="color" id="skriftfarge" value="#000000"> </p>
             
-            <label for="sender">Avsender:</label>
-            <input type="text" id="sender" name="sender" required><br><br>
+        </div>
+
+        <div class="bgfarge">
+            <p>Bakgrunnsfarge:   <input type="color" id="bkfarge" value="#000000"> </p>
             
-            <label for="color">Farge:</label>
-            <input type="color" id="color" name="color" required><br><br>
-            
-            <button type="submit">Lag kort!</button>
-        </form>
-        <div id="cardPreview"></div>
-    </div>
+        </div>
+
+        <div class="button">
+            <button>Lag julekort</button>
+        </div>
+        
     
-    <script src="js/script.js"></script>
-</body>
-</html>
+    
+    </div>
+
     
 </body>
 </html>
